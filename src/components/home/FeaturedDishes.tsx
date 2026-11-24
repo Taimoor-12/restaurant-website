@@ -75,10 +75,9 @@ export function FeaturedDishes({ dishes: customDishes, maxItems = 4 }: FeaturedD
                 <CardImage
                   src={dish.image}
                   alt={dish.name}
-                  width={400}
-                  height={225}
                   priority={index < 2}
-                  className="aspect-video sm:aspect-[4/3]"
+                  aspectRatio="video"
+                  className="sm:aspect-[4/3]"
                 />
                 <CardContent className="p-5 sm:p-6">
                   <div className="flex flex-wrap gap-1.5 mb-3" aria-label="Dietary information">

@@ -46,20 +46,26 @@ interface CardImageProps {
   height: number
   className?: string
   priority?: boolean
+  aspectRatio?: 'video' | 'square' | '4/3' | '16/9'
 }
 
-export function CardImage({ src, alt, width, height, className, priority = false }: CardImageProps) {
+export function CardImage({ src, alt, width, height, className, priority = false, aspectRatio = 'video' }: CardImageProps) {
+  const aspectClasses = {
+    video: 'aspect-video',
+    square: 'aspect-square',
+    '4/3': 'aspect-[4/3]',
+    '16/9': 'aspect-video',
+  }
+
   return (
-    <div className={cn('relative w-full aspect-video overflow-hidden', className)}>
+    <div className={cn('relative w-full overflow-hidden', aspectClasses[aspectRatio], className)}>
       <Image
         src={src}
         alt={alt}
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        className="object-cover transition-transform duration-350 ease-out-expo hover:scale-105"
+        className="object-cover transition-transform duration-350 hover:scale-105"
         priority={priority}
-        width={width}
-        height={height}
       />
     </div>
   )
