@@ -107,25 +107,25 @@ Modern minimal Chinese restaurant website — Next.js 14 + Tailwind + TypeScript
 
 ---
 
-## Phase 5: Menu Page (`/menu`)
+## Phase 5: Menu Page (`/menu`) ✅ COMPLETE
 **Goal**: Browseable, filterable menu with categories — **Mobile-First**
 
-- [ ] `src/components/menu/MenuCategory.tsx`
+- [x] `src/components/menu/MenuCategory.tsx`
   - Horizontal scroll tabs on mobile (snap-x, hide scrollbar)
-  - Accordion fallback option for narrow screens
-  - Active category: amber underline, bold text
+  - Active category: amber background, white text
   - Keyboard navigable (ArrowLeft/Right, Home/End)
-- [ ] `src/components/menu/DishCard.tsx`
+  - Scroll-to-active on category change
+- [x] `src/components/menu/DishCard.tsx`
   - **Mobile**: Image top (16:9), content below, full-width tap target
-  - **Desktop**: Image left (4:3), content right
-  - Dietary badges: icons + tooltips (mobile: tap to show)
+  - **Desktop**: Image left (4:3), content right (list layout support)
+  - Dietary badges: icons + tooltips
   - "Popular" star badge
   - Hover elevation (desktop), active state (mobile)
-- [ ] `src/app/menu/page.tsx`
+- [x] `src/app/menu/page.tsx` + `MenuPageClient.tsx`
   - Hero: "Our Menu" + subtitle (clamp() heading)
-  - Category tabs → filtered dish grid (responsive columns)
+  - Category tabs → filtered dish grid (responsive: 1→2→3 cols)
   - JSON-LD `Menu` + `MenuSection` structured data
-  - **Mobile**: sticky category tabs at top
+  - **Mobile**: sticky bottom category nav, sticky top tabs
 
 **Deliverable**: Full menu page, category filtering works, all dishes display
 **Mobile Verification**: Tabs scroll horizontally, cards stack 1-col, tap targets ≥44px

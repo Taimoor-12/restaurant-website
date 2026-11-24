@@ -151,3 +151,81 @@ export function generateLocalBusinessJsonLd(): object {
     sameAs: Object.values(restaurant.social),
   }
 }
+
+export function generateMenuJsonLd(): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Menu',
+    '@id': `${restaurant.url}/menu#menu`,
+    name: 'Our Menu',
+    description: 'Complete menu of authentic Chinese dishes at Golden Dragon',
+    hasMenuSection: [
+      {
+        '@type': 'MenuSection',
+        name: 'Appetizers',
+        description: 'Start your meal with our handcrafted appetizers',
+        hasMenuItem: {
+          '@type': 'MenuItem',
+          name: 'Crispy Spring Rolls',
+          description: 'Hand-rolled crispy wrappers filled with cabbage, carrots, glass noodles, and shiitake mushrooms.',
+          offers: { '@type': 'Offer', price: '8.00', priceCurrency: 'USD' },
+        },
+      },
+      {
+        '@type': 'MenuSection',
+        name: 'Soups',
+        description: 'Traditional Chinese soups made fresh daily',
+        hasMenuItem: {
+          '@type': 'MenuItem',
+          name: 'Hot & Sour Soup',
+          description: 'Classic Sichuan soup with tofu, bamboo shoots, wood ear mushrooms, and egg ribbons.',
+          offers: { '@type': 'Offer', price: '7.00', priceCurrency: 'USD' },
+        },
+      },
+      {
+        '@type': 'MenuSection',
+        name: 'Main Courses',
+        description: 'Sizzling wok classics and signature dishes',
+        hasMenuItem: {
+          '@type': 'MenuItem',
+          name: 'Peking Duck',
+          description: 'Crispy-skinned roasted duck served with thin pancakes, scallions, cucumber, and hoisin sauce.',
+          offers: { '@type': 'Offer', price: '38.00', priceCurrency: 'USD' },
+        },
+      },
+      {
+        '@type': 'MenuSection',
+        name: 'Rice & Noodles',
+        description: 'Wok-fried rice and hand-pulled noodle specialties',
+        hasMenuItem: {
+          '@type': 'MenuItem',
+          name: 'Yangzhou Egg Fried Rice',
+          description: 'Wok-fried jasmine rice with char siu pork, shrimp, egg, peas, carrots, and scallions.',
+          offers: { '@type': 'Offer', price: '14.00', priceCurrency: 'USD' },
+        },
+      },
+      {
+        '@type': 'MenuSection',
+        name: 'Vegetarian',
+        description: 'Plant-based dishes with authentic flavors',
+        hasMenuItem: {
+          '@type': 'MenuItem',
+          name: "Buddha's Delight",
+          description: 'Assorted seasonal vegetables, tofu, bamboo shoots, wood ear mushrooms, and glass noodles.',
+          offers: { '@type': 'Offer', price: '15.00', priceCurrency: 'USD' },
+        },
+      },
+      {
+        '@type': 'MenuSection',
+        name: 'Drinks',
+        description: 'Traditional teas and refreshing beverages',
+        hasMenuItem: {
+          '@type': 'MenuItem',
+          name: 'Jasmine Tea',
+          description: 'Premium jasmine green tea, served hot in a traditional ceramic pot.',
+          offers: { '@type': 'Offer', price: '4.00', priceCurrency: 'USD' },
+        },
+      },
+    ],
+  }
+}
