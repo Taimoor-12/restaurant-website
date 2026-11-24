@@ -225,6 +225,91 @@ Loading state with spinner
 
 ---
 
+## Mobile-First Responsive Design Requirements
+
+**Primary Target**: Mobile phones (320px - 480px width) — majority of restaurant website traffic
+
+### Core Principles
+- **Mobile-first CSS**: Base styles for mobile, enhance with `sm:`, `md:`, `lg:`, `xl:` prefixes
+- **Touch-friendly**: Minimum 44×44px tap targets (buttons, links, form inputs)
+- **Readable text**: Minimum 16px body text (no zoom required), fluid clamp() headings
+- **Single-column layouts** on mobile, progressive enhancement to multi-column
+- **Optimized images**: `next/image` with `sizes` attribute for proper srcset generation
+- **Performance**: Lazy-load below-fold images, priority on above-fold only
+
+### Component-Specific Mobile Requirements
+
+#### Header & Navigation
+- Hamburger menu → full-screen drawer (not sidebar)
+- Logo + tagline stacked on mobile, inline on desktop
+- CTA button full-width on mobile, auto-width on desktop
+- Sticky header with backdrop blur, hide on scroll down / show on scroll up (optional)
+
+#### Hero Sections
+- Full-screen height on mobile (`min-h-screen`)
+- Headline: `clamp(2rem, 8vw, 4rem)` — readable without horizontal scroll
+- CTA buttons stacked vertically on mobile, side-by-side on tablet+
+- Background image: `object-cover`, `fill`, priority loading
+
+#### Featured Dishes / Menu Grid
+- **Mobile**: 1 column, full-width cards
+- **Tablet (md)**: 2 columns
+- **Desktop (lg+)**: 3-4 columns
+- Card image: 16:9 aspect ratio on mobile, 4:3 on desktop
+- Touch-friendly card tap areas (entire card links to detail if applicable)
+
+#### About Section
+- **Mobile**: Stacked (image above text or vice versa)
+- **Desktop**: Side-by-side (image left, text right or alternating)
+- Stats row: 1 column mobile → 3 columns desktop
+
+#### Contact Form
+- **Mobile**: Full-width inputs, stacked layout
+- **Desktop**: 2-column (form left, info/map right)
+- Inputs: 48px minimum height, 16px font-size (prevents iOS zoom)
+- Labels above inputs (not inline) for accessibility
+
+#### Footer
+- **Mobile**: Single column, stacked sections
+- **Tablet**: 2×2 grid
+- **Desktop**: 4-column grid
+- Newsletter: stacked on mobile, inline on desktop
+
+#### Buttons & Interactive Elements
+- Minimum 48px height on mobile
+- Full-width on mobile for primary CTAs
+- Generous padding: `px-6 py-3` base, `px-8 py-4` for mobile primary
+- Clear focus states for keyboard navigation
+
+#### Typography Scale (Mobile-First)
+```css
+/* Base (mobile) → Enhanced at breakpoints */
+--text-display: clamp(2.5rem, 10vw, 5rem);
+--text-h1: clamp(2rem, 8vw, 3.5rem);
+--text-h2: clamp(1.5rem, 5vw, 2.5rem);
+--text-h3: clamp(1.25rem, 4vw, 1.75rem);
+--text-body: 1rem (16px) minimum;
+--text-sm: 0.875rem;
+```
+
+#### Spacing (Mobile-First)
+- Section padding: `py-12` (mobile) → `py-20` (tablet) → `py-28` (desktop)
+- Container padding: `px-4` (mobile) → `px-6` (tablet) → `px-8` (desktop)
+- Gap between elements: `gap-4` (mobile) → `gap-6` (tablet) → `gap-8` (desktop)
+
+### Testing Checklist
+- [ ] Test at 320px, 375px (iPhone SE/standard), 414px (iPhone Plus/Pro Max)
+- [ ] Test at 768px (iPad portrait), 1024px (iPad landscape)
+- [ ] Test at 1440px, 1920px (desktop)
+- [ ] Verify no horizontal scrolling at any breakpoint
+- [ ] Verify all tap targets ≥ 44×44px
+- [ ] Verify text readable without zoom (16px minimum)
+- [ ] Verify images load at appropriate sizes (check Network tab)
+- [ ] Verify forms work with virtual keyboard (no layout shift)
+- [ ] Verify modal/drawer doesn't trap focus incorrectly
+
+---
+
 ## Verification Checklist
 - [ ] `npm run dev` starts without errors
 - [ ] All 3 pages render correctly at all breakpoints

@@ -78,68 +78,81 @@ Modern minimal Chinese restaurant website — Next.js 14 + Tailwind + TypeScript
 
 ---
 
-## Phase 4: Home Page (`/`)
-**Goal**: Polished landing page with all sections
+## Phase 4: Home Page (`/`) ✅ COMPLETE
+**Goal**: Polished landing page with all sections — **Mobile-First**
 
-- [ ] `src/components/home/Hero.tsx`
-  - Full-screen, headline + subheadline + CTA
-  - Background image (Next.js Image, `priority`, `fill`)
-  - Subtle parallax on scroll (Framer Motion)
-- [ ] `src/components/home/FeaturedDishes.tsx`
-  - Grid (1 col mobile → 2 tablet → 3-4 desktop)
+- [x] `src/components/home/Hero.tsx`
+  - Full-screen (`min-h-screen`), headline + subheadline + CTA
+  - Background image (Next.js Image, `priority`, `fill`, `sizes="100vw"`)
+  - Subtle parallax on scroll (Framer Motion, respects reduced motion)
+  - **Mobile**: stacked CTAs, clamp() headline, 48px min button height
+- [x] `src/components/home/FeaturedDishes.tsx`
+  - Grid: 1 col mobile → 2 tablet → 3-4 desktop
   - 3-4 dishes from `dishes.ts` (marked `featured: true`)
   - Each: image, name, description, price, dietary badges
-  - Staggered fade-in-up on scroll
-- [ ] `src/components/home/AboutSection.tsx`
-  - 2-column: story text + image
-  - Stats row: Years serving • Signature dishes • Happy customers
-- [ ] `src/components/home/CTASection.tsx`
+  - Staggered fade-in-up on scroll (IntersectionObserver)
+  - **Mobile**: full-width cards, 16:9 image aspect, touch-friendly
+- [x] `src/components/home/AboutSection.tsx`
+  - **Mobile**: stacked (image + text), **Desktop**: side-by-side
+  - Stats row: 1 col mobile → 3 cols desktop
+  - Years serving • Signature dishes • Happy customers
+- [x] `src/components/home/CTASection.tsx`
   - Centered, amber background, white text
-  - "Reserve a Table" button → scrolls to contact or links to `/contact`
-- [ ] `src/app/page.tsx` — compose sections, add JSON-LD `Restaurant` structured data
+  - "Reserve a Table" button → links to `/contact`
+  - **Mobile**: full-width button, generous padding
+- [x] `src/app/page.tsx` — compose sections, add JSON-LD `Restaurant` + `LocalBusiness` structured data
 
 **Deliverable**: Beautiful home page, responsive, animated, accessible
+**Mobile Verification**: Test at 320px, 375px, 414px — no horizontal scroll, readable text, touch targets ≥44px
 
 ---
 
 ## Phase 5: Menu Page (`/menu`)
-**Goal**: Browseable, filterable menu with categories
+**Goal**: Browseable, filterable menu with categories — **Mobile-First**
 
 - [ ] `src/components/menu/MenuCategory.tsx`
-  - Tab list (horizontal scroll on mobile) or accordion
-  - Active category highlighted (amber underline)
-  - Keyboard navigable
+  - Horizontal scroll tabs on mobile (snap-x, hide scrollbar)
+  - Accordion fallback option for narrow screens
+  - Active category: amber underline, bold text
+  - Keyboard navigable (ArrowLeft/Right, Home/End)
 - [ ] `src/components/menu/DishCard.tsx`
-  - Image (left on desktop, top on mobile), name, description, price
-  - Dietary badges (icons + tooltips)
+  - **Mobile**: Image top (16:9), content below, full-width tap target
+  - **Desktop**: Image left (4:3), content right
+  - Dietary badges: icons + tooltips (mobile: tap to show)
   - "Popular" star badge
-  - Hover elevation
+  - Hover elevation (desktop), active state (mobile)
 - [ ] `src/app/menu/page.tsx`
-  - Hero: "Our Menu" + subtitle
-  - Category tabs → filtered dish grid
+  - Hero: "Our Menu" + subtitle (clamp() heading)
+  - Category tabs → filtered dish grid (responsive columns)
   - JSON-LD `Menu` + `MenuSection` structured data
+  - **Mobile**: sticky category tabs at top
 
 **Deliverable**: Full menu page, category filtering works, all dishes display
+**Mobile Verification**: Tabs scroll horizontally, cards stack 1-col, tap targets ≥44px
 
 ---
 
 ## Phase 6: Contact Page (`/contact`)
-**Goal**: Functional contact form + location info
+**Goal**: Functional contact form + location info — **Mobile-First**
 
 - [ ] `src/components/contact/ContactForm.tsx`
   - React Hook Form + Zod resolver
   - Fields: Name, Email, Phone, Subject (select), Message
-  - Validation messages inline
+  - Validation messages inline (below each field)
   - Submit → toast success (simulate API, no backend yet)
   - Loading state on button
+  - **Mobile**: 48px min input height, 16px font-size (no iOS zoom), full-width, stacked labels
 - [ ] `src/app/contact/page.tsx`
-  - Hero: "Contact Us"
-  - 2-col desktop: Form (left) | Info cards + Map (right)
-  - Info cards: Address, Phone, Email, Hours (icons + text)
-  - Embedded Google Maps iframe (placeholder coords)
+  - Hero: "Contact Us" (clamp() heading)
+  - **Mobile**: Stacked — Form first, then Info cards, then Map
+  - **Desktop**: 2-col — Form (left) | Info cards + Map (right)
+  - Info cards: Address, Phone, Email, Hours (icons + text, stacked mobile)
+  - Embedded Google Maps iframe (responsive aspect-ratio, lazy-load)
   - JSON-LD `LocalBusiness` structured data
+  - **Mobile**: Map collapsible or link to full-screen maps
 
 **Deliverable**: Working form with validation, info displayed, map renders
+**Mobile Verification**: Form usable with virtual keyboard, no layout shift, tap targets ≥44px
 
 ---
 
@@ -158,6 +171,14 @@ Modern minimal Chinese restaurant website — Next.js 14 + Tailwind + TypeScript
   - Skip link in Header
 - [ ] **Images**: All `next/image` with width/height, alt text, priority on heroes
 - [ ] **Performance**: Dynamic imports for heavy components, font optimization
+- [ ] **Mobile-First Verification**:
+  - Test at 320px, 375px, 414px, 768px, 1024px, 1440px, 1920px
+  - No horizontal scrolling at any breakpoint
+  - All tap targets ≥ 44×44px
+  - Text readable without zoom (16px minimum body)
+  - Forms work with virtual keyboard (no layout shift)
+  - Images load at appropriate sizes (check Network tab)
+  - Modal/drawer doesn't trap focus incorrectly
 
 **Deliverable**: Lighthouse > 90 across all categories
 
@@ -168,10 +189,19 @@ Modern minimal Chinese restaurant website — Next.js 14 + Tailwind + TypeScript
 
 - [ ] `npm run build` — no TypeScript errors, no ESLint warnings
 - [ ] `npm run start` — production server works
-- [ ] Test all 3 pages at mobile/tablet/desktop breakpoints
+- [ ] Test all 3 pages at mobile/tablet/desktop breakpoints (320px → 1920px)
 - [ ] Verify contact form submission flow
 - [ ] Create `.env.example` for any future API keys
 - [ ] Document deploy steps (Vercel recommended)
+- [ ] **Mobile QA Checklist**:
+  - [ ] iPhone SE (375px), iPhone 14 Pro (393px), iPhone Plus (428px)
+  - [ ] iPad Mini (768px), iPad Pro (1024px)
+  - [ ] Desktop (1440px, 1920px)
+  - [ ] No horizontal scroll
+  - [ ] Touch targets ≥ 44px
+  - [ ] 16px minimum text
+  - [ ] Forms work with keyboard
+  - [ ] Images properly sized
 
 **Deliverable**: Deployable Next.js app
 
