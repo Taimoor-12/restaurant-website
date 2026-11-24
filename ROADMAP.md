@@ -60,18 +60,19 @@ Modern minimal Chinese restaurant website — Next.js 14 + Tailwind + TypeScript
 
 ---
 
-## Phase 3: Data Layer & Types
+## Phase 3: Data Layer & Types ✅ COMPLETE
 **Goal**: Type-safe content source for menu + restaurant info
 
-- [ ] `src/lib/data/restaurant.ts`
+- [x] `src/lib/data/restaurant.ts`
   - Restaurant name, tagline, address, phone, email, hours, social URLs
-  - Structured data helpers for JSON-LD
-- [ ] `src/lib/data/dishes.ts`
+  - Structured data helpers for JSON-LD (Restaurant, LocalBusiness)
+- [x] `src/lib/data/dishes.ts`
   - `Category` type: 'appetizers' | 'soups' | 'mains' | 'rice-noodles' | 'vegetarian' | 'drinks'
-  - `DietaryTag` type: 'vegetarian' | 'vegan' | 'spicy' | 'nuts' | 'gluten-free'
-  - `Dish` interface + `dishes: Dish[]` array (15-20 sample dishes)
-  - Helper: `getDishesByCategory(category)`
-- [ ] `src/lib/validations/contactSchema.ts` — Zod schema for contact form
+  - `DietaryTag` type: 'vegetarian' | 'vegan' | 'spicy' | 'nuts' | 'gluten-free' | 'signature'
+  - `Dish` interface + 28 sample dishes with images, prices, dietary tags
+  - Helpers: `getDishesByCategory`, `getFeaturedDishes`, `getPopularDishes`, `getDishById`, `getAllCategories`
+  - Category labels, order, dietary labels/icons
+- [x] `src/lib/validations/contactSchema.ts` — Zod schema for contact form with subject enum
 
 **Deliverable**: Type-safe data imports, no `any` types
 
