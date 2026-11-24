@@ -4,7 +4,8 @@ import { cn } from '@/lib/utils/cn'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Navigation } from './Navigation'
-import { Button } from '@/components/ui/Button'
+import { Button, ButtonLink } from '@/components/ui/Button'
+import { LogoWithText } from '@/components/ui/Logo'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -35,13 +36,7 @@ export function Header() {
             className="flex items-center gap-2 text-charcoal hover:text-amber transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 rounded-sm"
             aria-label="Golden Dragon - Home"
           >
-            <span className="font-heading text-heading-md font-semibold tracking-tight">
-              Golden Dragon
-            </span>
-            <span className="hidden sm:inline-block w-px h-6 bg-border mx-2" aria-hidden="true" />
-            <span className="hidden sm:inline text-body-sm text-charcoal/60 font-medium">
-              Authentic Chinese Cuisine
-            </span>
+            <LogoWithText size="md" />
           </Link>
 
           {/* Navigation + CTA */}
@@ -49,9 +44,9 @@ export function Header() {
 
           {/* Mobile CTA Button */}
           <div className="hidden md:flex">
-            <Button variant="primary" size="sm" asChild>
-              <Link href="/contact">Reserve a Table</Link>
-            </Button>
+            <ButtonLink href="/contact" variant="primary" size="sm">
+              Reserve a Table
+            </ButtonLink>
           </div>
         </div>
       </div>

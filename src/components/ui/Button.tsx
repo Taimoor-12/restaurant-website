@@ -40,7 +40,7 @@ export function Button({
   return (
     <button
       className={cn(
-        'btn-base',
+        'btn-base inline-flex items-center justify-center',
         variantClasses[variant],
         sizeClasses[size],
         fullWidth && 'w-full',
@@ -55,5 +55,30 @@ export function Button({
       )}
       <span className={cn(loading && 'opacity-0')}>{children}</span>
     </button>
+  )
+}
+
+/* Link styled as button - for navigation CTAs */
+export function ButtonLink({
+  href,
+  variant = 'primary',
+  size = 'md',
+  className,
+  children,
+  ...props
+}: Omit<ButtonProps, 'loading' | 'fullWidth' | 'disabled' | 'onClick'> & { href: string }) {
+  return (
+    <a
+      href={href}
+      className={cn(
+        'btn-base inline-flex items-center justify-center',
+        variantClasses[variant],
+        sizeClasses[size],
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </a>
   )
 }
