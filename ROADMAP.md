@@ -23,38 +23,38 @@ Modern minimal Chinese restaurant website — Next.js 14 + Tailwind + TypeScript
 
 ---
 
-## Phase 1: Design System & UI Primitives
+## Phase 1: Design System & UI Primitives ✅ COMPLETE
 **Goal**: Reusable component library with consistent styling
 
-- [ ] `src/lib/utils/cn.ts` — `clsx` + `tailwind-merge` helper
-- [ ] `src/lib/utils/formatPrice.ts` — currency formatting
-- [ ] `src/components/ui/Container.tsx` — max-width wrapper, responsive padding
-- [ ] `src/components/ui/Section.tsx` — semantic section with spacing variants
-- [ ] `src/components/ui/Button.tsx` — variants (primary/secondary/ghost), sizes, loading state
-- [ ] `src/components/ui/Card.tsx` — image + content, hover elevation
-- [ ] `src/components/ui/Input.tsx` — form input with label, error state
-- [ ] `src/hooks/useReducedMotion.ts` — respects `prefers-reduced-motion`
-- [ ] Global CSS: CSS custom properties for color palette, fluid typography clamp()
+- [x] `src/lib/utils/cn.ts` — `clsx` + `tailwind-merge` helper
+- [x] `src/lib/utils/formatPrice.ts` — currency formatting
+- [x] `src/components/ui/Container.tsx` — max-width wrapper, responsive padding
+- [x] `src/components/ui/Section.tsx` — semantic section with spacing variants
+- [x] `src/components/ui/Button.tsx` — variants (primary/secondary/ghost/outline), sizes, loading state
+- [x] `src/components/ui/Card.tsx` — image + content, hover elevation, composable sub-components
+- [x] `src/components/ui/Input.tsx` — Input, Textarea, Select with label, error, hint
+- [x] `src/hooks/useReducedMotion.ts` — respects `prefers-reduced-motion`
+- [x] Global CSS: CSS custom properties for color palette, fluid typography clamp()
 
-**Deliverable**: Storybook-style component showcase page (optional) or manual verification
+**Deliverable**: Reusable component library with consistent styling
 
 ---
 
-## Phase 2: Layout Components (Header, Footer, Navigation)
+## Phase 2: Layout Components (Header, Footer, Navigation) ✅ COMPLETE
 **Goal**: Shared shell across all pages
 
-- [ ] `src/components/layout/Header.tsx`
+- [x] `src/components/layout/Header.tsx`
   - Fixed, backdrop-blur on scroll
   - Logo (text-based, no image dependency)
   - Desktop nav links: Home | Menu | Contact
   - CTA button: "Reserve a Table"
   - Mobile: hamburger → slide-in drawer (Framer Motion)
-- [ ] `src/components/layout/Navigation.tsx` — extracted nav links + mobile drawer
-- [ ] `src/components/layout/Footer.tsx`
+- [x] `src/components/layout/Navigation.tsx` — extracted nav links + mobile drawer
+- [x] `src/components/layout/Footer.tsx`
   - 4-column grid: About, Quick Links, Contact Info, Social/Newsletter
   - Newsletter email input
   - Copyright line
-- [ ] `src/app/layout.tsx` — root layout, metadata, font loading (Inter via `next/font`)
+- [x] `src/app/layout.tsx` — updated with Header/Footer, proper main content area
 
 **Deliverable**: All pages share consistent header/footer; mobile menu works
 

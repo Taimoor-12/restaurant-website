@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import { Header } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
 import './globals.css'
 
 const inter = Inter({
@@ -65,11 +67,15 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="bg-cream text-charcoal">
+      <body className="bg-cream text-charcoal flex min-h-screen flex-col">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        {children}
+        <Header />
+        <main id="main-content" className="flex-1 pt-16 md:pt-20">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )
