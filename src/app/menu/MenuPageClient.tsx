@@ -1,16 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { cn } from '@/lib/utils/cn'
 import { MenuCategory } from '@/components/menu/MenuCategory'
 import { DishCard } from '@/components/menu/DishCard'
-import { getAllCategories, getDishesByCategory, type Category, type Dish, categoryLabels } from '@/lib/data/dishes'
+import { getDishesByCategory, type Category, categoryLabels } from '@/lib/data/dishes'
 import { generateMenuJsonLd } from '@/lib/data/restaurant'
 
 export function MenuPageClient() {
   const [activeCategory, setActiveCategory] = useState<Category>('appetizers')
   const dishes = getDishesByCategory(activeCategory)
-  const allCategories = getAllCategories()
 
   const menuJsonLd = generateMenuJsonLd()
 
@@ -68,31 +66,6 @@ export function MenuPageClient() {
             )}
           </div>
         </section>
-
-        {/* Category Navigation Helper (Mobile) */}
-        <nav
-          className="bg-cream border-t border-border sticky bottom-0 z-20 md:hidden"
-          role="navigation"
-          aria-label="Quick category navigation"
-        >
-          <div className="flex overflow-x-auto scrollbar-hide gap-2 p-4">
-            {allCategories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={cn(
-                  'flex-shrink-0 px-3 py-2 text-body-sm font-medium rounded-full transition-all',
-                  activeCategory === category
-                    ? 'bg-amber text-white'
-                    : 'text-charcoal/70 bg-white'
-                )}
-                aria-current={activeCategory === category ? 'true' : 'false'}
-              >
-                {categoryLabels[category]}
-              </button>
-            ))}
-          </div>
-        </nav>
       </main>
     </>
   )
