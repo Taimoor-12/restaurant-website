@@ -38,8 +38,8 @@ const newsletterInfo = {
 export function Footer() {
   return (
     <footer className="bg-charcoal text-cream" role="contentinfo">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div className="grid gap-8 lg:gap-12 lg:grid-cols-4">
           {/* About Column */}
           <div className="lg:col-span-1">
             <Link
@@ -60,9 +60,9 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="text-cream/60 hover:text-amber transition-colors"
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-cream/70 hover:bg-amber hover:text-white transition-colors touch-target"
                 >
-                  <social.icon className="h-5 w-5" aria-hidden="true" />
+                  <social.icon className="h-6 w-6" aria-hidden="true" />
                 </a>
               ))}
             </div>
@@ -78,7 +78,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-body text-cream/70 hover:text-amber transition-colors"
+                    className="text-body text-cream/70 hover:text-amber transition-colors touch-target py-1.5 block"
                   >
                     {link.label}
                   </Link>
@@ -102,13 +102,13 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-amber shrink-0" aria-hidden="true" />
-                <a href={`tel:${restaurantInfo.phone.replace(/\D/g, '')}`} className="hover:text-amber transition-colors">
+                <a href={`tel:${restaurantInfo.phone.replace(/\D/g, '')}`} className="hover:text-amber transition-colors touch-target py-1.5 block">
                   {restaurantInfo.phone}
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-amber shrink-0" aria-hidden="true" />
-                <a href={`mailto:${restaurantInfo.email}`} className="hover:text-amber transition-colors">
+                <a href={`mailto:${restaurantInfo.email}`} className="hover:text-amber transition-colors touch-target py-1.5 block">
                   {restaurantInfo.email}
                 </a>
               </div>
@@ -130,12 +130,12 @@ export function Footer() {
             </dl>
 
             {/* Newsletter */}
-            <div className="mt-10 pt-8 border-t border-white/10" aria-labelledby="newsletter-heading">
+            <div className="mt-8 pt-6 border-t border-white/10" aria-labelledby="newsletter-heading">
               <h2 id="newsletter-heading" className="heading-card font-semibold text-cream">
                 {newsletterInfo.title}
               </h2>
               <p className="mt-2 text-body-sm text-cream/60">{newsletterInfo.description}</p>
-              <form className="mt-4 flex gap-2" role="search" aria-label="Newsletter signup">
+              <form className="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3" role="search" aria-label="Newsletter signup">
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email address
                 </label>
@@ -144,12 +144,12 @@ export function Footer() {
                   id="newsletter-email"
                   name="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-cream placeholder:text-cream/40 focus:border-amber focus:ring-2 focus:ring-amber/20 focus:outline-none transition-all"
+                  className="flex-1 px-4 py-4 bg-white/5 border border-white/10 rounded-sm text-cream placeholder:text-cream/40 focus:border-amber focus:ring-2 focus:ring-amber/20 focus:outline-none transition-all touch-target"
                   aria-describedby="newsletter-email-hint"
                 />
                 <button
                   type="submit"
-                  className="btn-primary px-6 py-3 whitespace-nowrap"
+                  className="btn-primary px-6 py-4 whitespace-nowrap touch-target"
                   aria-label="Subscribe to newsletter"
                 >
                   Subscribe
@@ -163,14 +163,14 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-body-sm text-cream/50">
+        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-body-sm text-cream/50 text-center sm:text-left">
             &copy; {new Date().getFullYear()} {restaurantInfo.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-body-sm text-cream/50">
-            <Link href="/privacy" className="hover:text-amber transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-amber transition-colors">Terms of Service</Link>
-            <Link href="/accessibility" className="hover:text-amber transition-colors">Accessibility</Link>
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-6 text-body-sm text-cream/50">
+            <Link href="/privacy" className="hover:text-amber transition-colors touch-target py-1">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-amber transition-colors touch-target py-1">Terms of Service</Link>
+            <Link href="/accessibility" className="hover:text-amber transition-colors touch-target py-1">Accessibility</Link>
           </div>
         </div>
       </div>

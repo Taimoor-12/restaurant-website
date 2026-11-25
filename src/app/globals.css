@@ -120,6 +120,12 @@
 }
 
 @layer utilities {
+  /* Touch target - minimum 44x44px for mobile accessibility */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
   /* Text balance for headlines */
   .text-balance {
     text-wrap: balance;
