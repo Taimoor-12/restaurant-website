@@ -73,7 +73,7 @@ export function Footer() {
             <h2 id="quick-links-heading" className="heading-card font-semibold text-cream">
               Quick Links
             </h2>
-            <ul className="mt-4 space-y-3" role="list">
+            <ul className="mt-4 space-y-3 lg:space-y-2" role="list">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -92,7 +92,7 @@ export function Footer() {
             <h2 id="contact-heading" className="heading-card font-semibold text-cream">
               Contact Us
             </h2>
-            <div className="mt-4 space-y-4 text-body text-cream/70">
+            <div className="mt-4 space-y-4 lg:space-y-3 text-body text-cream/70">
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-amber shrink-0 mt-0.5" aria-hidden="true" />
                 <div>
@@ -135,7 +135,7 @@ export function Footer() {
                 {newsletterInfo.title}
               </h2>
               <p className="mt-2 text-body-sm text-cream/60">{newsletterInfo.description}</p>
-              <form className="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3" role="search" aria-label="Newsletter signup">
+              <form className="mt-4 flex flex-col sm:flex-row lg:flex-row gap-2 sm:gap-3 lg:gap-4" role="search" aria-label="Newsletter signup">
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email address
                 </label>
@@ -144,7 +144,7 @@ export function Footer() {
                   id="newsletter-email"
                   name="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-4 bg-white/5 border border-white/10 rounded-sm text-cream placeholder:text-cream/40 focus:border-amber focus:ring-2 focus:ring-amber/20 focus:outline-none transition-all touch-target"
+                  className="flex-1 min-w-[280px] lg:min-w-[320px] px-4 py-4 bg-white/5 border border-white/10 rounded-sm text-cream placeholder:text-cream/40 focus:border-amber focus:ring-2 focus:ring-amber/20 focus:outline-none transition-all touch-target"
                   aria-describedby="newsletter-email-hint"
                 />
                 <button
