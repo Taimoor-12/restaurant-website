@@ -135,7 +135,7 @@ export function Footer() {
                 {newsletterInfo.title}
               </h2>
               <p className="mt-2 text-body-sm text-cream/60">{newsletterInfo.description}</p>
-              <form className="mt-4 flex flex-col sm:flex-row lg:flex-row gap-2 sm:gap-3 lg:gap-4" role="search" aria-label="Newsletter signup">
+              <form className="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3 lg:gap-4 items-stretch sm:items-center" role="search" aria-label="Newsletter signup">
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email address
                 </label>
@@ -144,12 +144,12 @@ export function Footer() {
                   id="newsletter-email"
                   name="email"
                   placeholder="Enter your email"
-                  className="flex-1 min-w-[280px] lg:min-w-[320px] px-4 py-4 bg-white/5 border border-white/10 rounded-sm text-cream placeholder:text-cream/40 focus:border-amber focus:ring-2 focus:ring-amber/20 focus:outline-none transition-all touch-target"
+                  className="w-full sm:w-[280px] lg:w-[320px] px-4 py-4 bg-white/5 border border-white/10 rounded-sm text-cream placeholder:text-cream/40 focus:border-amber focus:ring-2 focus:ring-amber/20 focus:outline-none transition-all touch-target"
                   aria-describedby="newsletter-email-hint"
                 />
                 <button
                   type="submit"
-                  className="btn-primary px-6 py-4 whitespace-nowrap touch-target"
+                  className="btn-primary px-6 py-4 whitespace-nowrap touch-target flex-shrink-0"
                   aria-label="Subscribe to newsletter"
                 >
                   Subscribe
